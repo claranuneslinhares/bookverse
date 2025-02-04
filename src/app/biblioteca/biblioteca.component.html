@@ -1,1 +1,4 @@
-<p>biblioteca works!</p>
+<h2>Meus Livros Favoritos</h2>
+<div *ngFor="let book of favoriteBooks">
+  <p>{{ book.title }} - {{ book.author }}</p>
+</div>

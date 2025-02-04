@@ -1,7 +1,5 @@
-<div *ngfor="let book of books">
-    <div>
-        <h3>{{book.title}}</h3>
-        <p>{{book.author}}</p>
-        <button(click)="viewLivros-Detalhes(book.id)">Ver detalhes</button>
-    </div>
-</div>
+<div *ngFor="let book of books">
+    <h3>{{ book.title }}</h3>
+    <p>Autor: {{ book.author }}</p>
+    <button (click)="viewLivrosDetalhes(book.id)">Ver detalhes</button>
+  </div>

@@ -1,1 +1,9 @@
-<p>livros-detalhes works!</p>
+<!-- Botão de favoritar (só aparece se o livro ainda não for favorito) -->
+<div *ngIf="!isFavorite">
+  <button (click)="addToFavorites()">Favoritar</button>
+</div>
+
+<!-- Mensagem de já favoritado -->
+<div *ngIf="showAlreadyFavoritedMessage">
+  <p>Este livro já está nos favoritos!</p>
+</div>
