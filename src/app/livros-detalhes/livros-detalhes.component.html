@@ -1,9 +1,7 @@
-<!-- Botão de favoritar (só aparece se o livro ainda não for favorito) -->
-<div *ngIf="!isFavorite">
-  <button (click)="addToFavorites()">Favoritar</button>
-</div>
-
-<!-- Mensagem de já favoritado -->
-<div *ngIf="showAlreadyFavoritedMessage">
-  <p>Este livro já está nos favoritos!</p>
+<div *ngIf="livro">
+  <h2>{{ livro.title }}</h2>
+  <img [src]="livro.image_url" alt="{{ livro.title }}" />
+  <p><strong>Autor:</strong> {{ livro.author }}</p>
+  <p><strong>Avaliação:</strong> {{ livro.rating }}</p>
+  <button (click)="favoritarLivro()">Favoritar</button>
 </div>

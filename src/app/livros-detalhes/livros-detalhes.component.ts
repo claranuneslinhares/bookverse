@@ -1,38 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BibliotecaService } from '../services/biblioteca.service';
 import { BookService } from '../services/book.service';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-livros-detalhes',
   standalone: true,
-  imports: [CommonModule, FormsModule ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './livros-detalhes.component.html',
   styleUrl: './livros-detalhes.component.css'
 })
-export class LivrosDetalhesComponent{
-  bookId!: string;
-  isFavorite: boolean = false;
+export class LivrosDetalhesComponent implements OnInit{
+  livro: any;
 
   constructor(
     private route: ActivatedRoute,
+    private bookService: BookService,
     private bibliotecaService: BibliotecaService
   ) {}
 
   ngOnInit() {
-    this.bookId = this.route.snapshot.paramMap.get('id') || '';
-    this.isFavorite = this.bibliotecaService.isFavorite(this.bookId);  // Alterei o nome do método aqui
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.bookService.buscarLivroPorId(id).subscribe((data) => {
+        this.livro = data;
+      });
+    }
   }
 
-  addToFavorites() {
-    this.bibliotecaService.addBookToFavorites(this.bookId);  // Alterei o nome do método aqui
-    this.isFavorite = true;
-  }
-
-  showAlreadyFavoritedMessage(): boolean {
-    return this.isFavorite;
+  favoritarLivro() {
+    this.bibliotecaService.adicionarFavorito(this.livro);
   }
 }

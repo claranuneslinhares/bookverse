@@ -1,7 +1,33 @@
-<nav>
-    <ul>
+<style>
+  header {
+  background: greenS;
+  padding: 1rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+</style>
+<header>
+    <nav>
+      <ul>
         <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/search">Buscar</a></li>
-        <li><a routerLink="/biblioteca">Minha biblioteca</a></li>
-    </ul>
-</nav>
+        <li><a routerLink="/pesquisa">Pesquisar</a></li>
+        <li><a routerLink="/biblioteca">Biblioteca</a></li>
+        <li><a routerLink="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>

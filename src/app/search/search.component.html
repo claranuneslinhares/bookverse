@@ -1,3 +1,9 @@
-<div *ngFor="let book of books">
-    <p>{{ book.title }} - {{ book.author }}</p>
-  </div>
+<h2>Pesquisar Livros</h2>
+<input type="text" [(ngModel)]="query" placeholder="Digite um título..." />
+<button (click)="pesquisarLivros()">Buscar</button>
+
+<ul>
+  <li *ngFor="let livro of livros">
+    <a [routerLink]="['/livro', livro.id]">{{ livro.title }}</a>
+  </li>
+</ul>

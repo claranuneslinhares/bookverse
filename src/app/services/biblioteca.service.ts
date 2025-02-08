@@ -5,20 +5,31 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BibliotecaService {
-  private favorites: string[] = [];
+  private favoritosKey = 'livrosFavoritos';
 
   constructor() {}
 
-  // Verifica se o livro está nos favoritos
-  isFavorite(bookId: string): boolean {
-    return this.favorites.includes(bookId);
+  obterFavoritos(): any[] {
+    return JSON.parse(localStorage.getItem(this.favoritosKey) || '[]');
   }
 
-  // Adiciona o livro aos favoritos
-  addBookToFavorites(bookId: string): void {
-    if (!this.isFavorite(bookId)) {
-      this.favorites.push(bookId);
+  adicionarFavorito(livro: any) {
+    const favoritos = this.obterFavoritos();
+    const jaExiste = favoritos.some((item) => item.id === livro.id);
+
+    if (!jaExiste) {
+      favoritos.push(livro);
+      localStorage.setItem(this.favoritosKey, JSON.stringify(favoritos));
+      console.log(`Livro "${livro.title}" favoritado!`);
+    } else {
+      console.log(`O livro "${livro.title}" já está nos favoritos.`);
     }
+  }
+
+  removerFavorito(id: string) {
+    let favoritos = this.obterFavoritos();
+    favoritos = favoritos.filter((livro) => livro.id !== id);
+    localStorage.setItem(this.favoritosKey, JSON.stringify(favoritos));
   }
 }
 

@@ -1,4 +1,7 @@
-<h2>Meus Livros Favoritos</h2>
-<div *ngFor="let book of favoriteBooks">
-  <p>{{ book.title }} - {{ book.author }}</p>
-</div>
+<h2>Minha Biblioteca</h2>
+<ul>
+  <li *ngFor="let livro of biblioteca">
+    <a [routerLink]="['/livro', livro.id]">{{ livro.title }}</a>
+    <button (click)="removerFavorito(livro.id)">Remover</button>
+  </li>
+</ul>
