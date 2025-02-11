@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'livro/:id', component: LivrosDetalhesComponent },
   { path: 'pesquisa', component: SearchComponent },
   { path: 'biblioteca', component: BibliotecaComponent },
