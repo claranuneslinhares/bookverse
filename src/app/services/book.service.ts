@@ -16,7 +16,7 @@ export class BookService {
     constructor(private http: HttpClient) {}
   
     buscarLivrosPorPesquisa(query: string): Observable<any> {
-      return this.http.get(`${this.apiUrl}/search/${query}`, {
+      return this.http.get(`${this.apiUrl}/searchBooks?keyword=${query}`, {
         headers: this.headers,
       });
     }
