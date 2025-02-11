@@ -1,4 +1,6 @@
-<h2>Login</h2>
+<body>
+  <div class="login-container">
+  <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <label for="email">E-mail:</label>
     <input type="email" id="email" formControlName="email" required />
@@ -8,3 +10,8 @@
   
     <button type="submit">Entrar</button>
   </form>
+    <div class="register">
+      <p>Não tem uma conta?<a href="#">Cadastra-se</a></p>
+    </div>
+</div>
+</body>
