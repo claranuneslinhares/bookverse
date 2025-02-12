@@ -1,3 +1,5 @@
+<body>
+<div class="container">
 <h2>Pesquisar Livros</h2>
 <input type="text" [(ngModel)]="query" placeholder="Digite um título..." />
 <button (click)="pesquisarLivros()">Buscar</button>
@@ -7,3 +9,5 @@
     <a [routerLink]="['/livro', livro.id]">{{ livro.title }}</a>
   </li>
 </ul>
+</div>
+</body>
