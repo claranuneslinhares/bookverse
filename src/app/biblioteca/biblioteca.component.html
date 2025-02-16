@@ -1,11 +1,11 @@
 <body>
-<div class="container">
-<h2>Minha Biblioteca</h2>
-<ul>
-  <li *ngFor="let livro of biblioteca">
-    <a [routerLink]="['/livro', livro.id]">{{ livro.title }}</a>
-    <button (click)="removerFavorito(livro.id)">Remover</button>
-  </li>
-</ul>
-</div>
+  <h1>Minha Biblioteca</h1>
+  <div *ngFor="let livro of livrosFavoritos" class="book-container">
+    <img [src]="livro.volumeInfo.imageLinks?.thumbnail" alt="Capa do livro">
+    <div class="book-details">
+      <h2>{{ livro.volumeInfo.title }}</h2>
+      <p>Autor: {{ livro.volumeInfo.authors?.join(', ') }}</p>
+      <button (click)="removerFavorito(livro.id)">Remover</button>
+    </div>
+  </div>
 </body>

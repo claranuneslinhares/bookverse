@@ -2,26 +2,27 @@ import { Component, OnInit} from '@angular/core';
 import { BibliotecaService } from '../services/biblioteca.service';
 import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-biblioteca',
   standalone: true,
-  imports: [ CommonModule, FormsModule, RouterLink],
+  imports: [ CommonModule, FormsModule, ],
   templateUrl: './biblioteca.component.html',
   styleUrl: './biblioteca.component.css'
 })
-export class BibliotecaComponent {
-  biblioteca: any[] = [];
+export class BibliotecaComponent implements OnInit {
+  livrosFavoritos: any[] = [];
+
+ 
 
   constructor(private bibliotecaService: BibliotecaService) {}
 
   ngOnInit() {
-    this.biblioteca = this.bibliotecaService.obterFavoritos();
+    this.livrosFavoritos = this.bibliotecaService.obterFavoritos();
   }
 
   removerFavorito(id: string) {
-    this.bibliotecaService.removerFavorito(id);
-    this.biblioteca = this.bibliotecaService.obterFavoritos();
+    this.bibliotecaService.removerDosFavoritos(id);
+    this.livrosFavoritos = this.bibliotecaService.obterFavoritos();
   }
 }

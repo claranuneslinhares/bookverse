@@ -1,29 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { map } from 'rxjs/operators';
+export interface LivroGoogle {
+  id: string;
+  volumeInfo: {
+    title: string;
+    authors: string[];
+    description: string;
+    imageLinks?: {
+      thumbnail: string;
+    };
+  };
+}
 @Injectable({
   providedIn: 'root'
 })
 export class BookService { 
-    private apiUrl = 'https://goodreads12.p.rapidapi.com';
-  
-    private headers = {
-      'x-rapidapi-key': 'eb38c2101bmsh8e61218841b3f41p1d1217jsn4a2a56482591',
-      'x-rapidapi-host': 'goodreads12.p.rapidapi.com',
-    };
-  
+    private apiUrl = 'https://www.googleapis.com/books/v1/volumes?q='; 
+    private apiKey = 'AIzaSyB8g6tRPJY95X2ECx9JtQS8B0R8tZCVSF4'; 
+  searchBooks: any;
+      
     constructor(private http: HttpClient) {}
-  
-    buscarLivrosPorPesquisa(query: string): Observable<any> {
-      return this.http.get(`${this.apiUrl}/searchBooks?keyword=${query}`, {
-        headers: this.headers,
-      });
+
+    buscarLivros(termo: string): Observable<any[]> {
+      return this.http.get<any>(`${this.apiUrl}${termo}`).pipe(
+        map(response => response.items || []) // Retorna os livros encontrados
+      );
     }
-  
-    buscarLivroPorId(id: string): Observable<any> {
-      return this.http.get(`${this.apiUrl}/getBookByID/${id}`, {
-        headers: this.headers,
-      });
-    }
+    
   }
