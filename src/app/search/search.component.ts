@@ -3,11 +3,12 @@ import { BookService } from '../services/book.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LivroGoogle } from '../services/book.service';
-
+import { RouterLink } from '@angular/router';
+import { LivrosDetalhesComponent } from '../livros-detalhes/livros-detalhes.component';
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterLink, LivrosDetalhesComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
@@ -26,5 +27,4 @@ export class SearchComponent {
       this.livros = response;
     });
   }
-  
 }

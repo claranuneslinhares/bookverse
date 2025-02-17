@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 export interface LivroGoogle {
   id: string;
   volumeInfo: {
@@ -28,5 +28,9 @@ export class BookService {
         map(response => response.items || []) // Retorna os livros encontrados
       );
     }
-    
+    getLivroGoogle(termo: string): Observable<any[]> {
+      return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
+        tap ((response: any) => console.log('Dados do livro:', response)) // Retorna os livros encontrados
+      );
   }
+}

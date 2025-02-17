@@ -1,9 +1,7 @@
 <div class="book-container">
-  <img [src]="livro.volumeInfo.imageLinks?.thumbnail" alt="Capa do livro">
-  <div class="book-details">
-    <h2>{{ livro.volumeInfo.title }}</h2>
-    <p>Autor: {{ livro.volumeInfo.authors?.join(', ') }}</p>
-    <p>{{ livro.volumeInfo.description }}</p>
+  <img [src]="livroId?.volumeInfo?.imageLinks?.thumbnail" alt="Capa do livro">
+    <h2>{{ livroId?.volumeInfo?.title }}</h2>
+    <p>Autor: {{ livroId?.volumeInfo?.authors?.join(', ') }}</p>
+    <p>{{ livroId?.volumeInfo?.description }}</p>
     <button (click)="favoritarLivro()">Favoritar</button>
   </div>
-</div>

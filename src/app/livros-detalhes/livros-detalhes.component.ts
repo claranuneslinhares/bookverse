@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Input } from '@angular/core';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-livros-detalhes',
@@ -13,13 +14,20 @@ import { Input } from '@angular/core';
   templateUrl: './livros-detalhes.component.html',
   styleUrl: './livros-detalhes.component.css'
 })
-export class LivrosDetalhesComponent {
-  @Input() livro: any; // Recebe os dados do livro  
-
-  constructor(private bibliotecaService: BibliotecaService) {}
+export class LivrosDetalhesComponent implements OnInit {
+  livroId: any;
+  constructor(private bibliotecaService: BibliotecaService, private bookService: BookService, private route: ActivatedRoute) {}
 
   favoritarLivro() {
-    this.bibliotecaService.adicionarAosFavoritos(this.livro);
+    this.bibliotecaService.adicionarAosFavoritos(this.livroId);
     alert('Livro favoritado!');
   }
+  ngOnInit(){
+   const id=
+   this.route.snapshot.paramMap.get('id');
+   if(id){
+
+  this.bookService.getLivroGoogle(id).subscribe((livro:any) => {this.livroId=livro});
+}
+}
 }
