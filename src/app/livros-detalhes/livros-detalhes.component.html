@@ -1,7 +1,7 @@
-<div class="book-container">
-  <img [src]="livroId?.volumeInfo?.imageLinks?.thumbnail" alt="Capa do livro">
-    <h2>{{ livroId?.volumeInfo?.title }}</h2>
-    <p>Autor: {{ livroId?.volumeInfo?.authors?.join(', ') }}</p>
-    <p>{{ livroId?.volumeInfo?.description }}</p>
-    <button (click)="favoritarLivro()">Favoritar</button>
-  </div>
+<div class="book-container" *ngIf="livro">
+  <img *ngIf="livro?.volumeInfo?.imageLinks?.thumbnail" [src]="livro.volumeInfo.imageLinks.thumbnail" alt="Capa do livro">
+  <h2>{{ livro.volumeInfo.title }}</h2>
+  <p>Autor: {{ livro.volumeInfo.authors.join(', ') }}</p>
+  <p>{{ livro.volumeInfo.description }}</p>
+  <button (click)="favoritarLivro()">⭐ Favoritar</button>
+</div>

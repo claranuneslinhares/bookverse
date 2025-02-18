@@ -1,11 +1,16 @@
-<body>
-  <h1>Minha Biblioteca</h1>
-  <div *ngFor="let livro of livrosFavoritos" class="book-container">
-    <img [src]="livro.volumeInfo.imageLinks?.thumbnail" alt="Capa do livro">
-    <div class="book-details">
-      <h2>{{ livro.volumeInfo.title }}</h2>
-      <p>Autor: {{ livro.volumeInfo.authors?.join(', ') }}</p>
-      <button (click)="removerFavorito(livro.id)">Remover</button>
+<div class="container">
+  <h1>📚 Minha Biblioteca</h1>
+
+  <div *ngIf="livrosFavoritos.length > 0; else vazio">
+    <div *ngFor="let livro of livrosFavoritos" class="book-card">
+      <img *ngIf="livro.volumeInfo?.imageLinks?.thumbnail" [src]="livro.volumeInfo.imageLinks.thumbnail" alt="{{ livro.volumeInfo.title }}">
+      <h3>{{ livro.volumeInfo.title }}</h3>
+      <p>Autor: {{ livro.volumeInfo.authors.join(', ') || 'Desconhecido' }}</p>
+      <button (click)="removerFavorito(livro.id)">❌ Remover</button>
     </div>
   </div>
-</body>
+
+  <ng-template #vazio>
+    <p>Você ainda não favoritou nenhum livro.</p>
+  </ng-template>
+</div>

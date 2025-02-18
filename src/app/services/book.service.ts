@@ -28,9 +28,9 @@ export class BookService {
         map(response => response.items || []) // Retorna os livros encontrados
       );
     }
-    getLivroGoogle(termo: string): Observable<any[]> {
-      return this.http.get<any>(`${this.apiUrl}/${id}`).pipe(
-        tap ((response: any) => console.log('Dados do livro:', response)) // Retorna os livros encontrados
+    getLivroGoogle(id: string): Observable<any> {
+      return this.http.get<any>(`https://www.googleapis.com/books/v1/volumes/${id}`).pipe(
+        tap(response => console.log('Dados do livro:', response)) 
       );
+    }
   }
-}

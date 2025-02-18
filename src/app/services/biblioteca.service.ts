@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-
+import { LivroGoogle } from './book.service';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class BibliotecaService {
-  private livrosFavoritos: any[] = [];
+  private favoritos: any[] = [];
 
-  constructor() {}
+  obterFavoritos(): any[] {
+    return this.favoritos;
+  }
 
   adicionarAosFavoritos(livro: any) {
-    if (!this.livrosFavoritos.some(l => l.id === livro.id)) {
-      this.livrosFavoritos.push(livro);
+    if (!this.favoritos.some(fav => fav.id === livro.id)) {
+      this.favoritos.push(livro);
     }
   }
 
   removerDosFavoritos(id: string) {
-    this.livrosFavoritos = this.livrosFavoritos.filter(livro => livro.id !== id);
-  }
-
-  obterFavoritos() {
-    return this.livrosFavoritos;
+    this.favoritos = this.favoritos.filter(livro => livro.id !== id);
   }
 }
