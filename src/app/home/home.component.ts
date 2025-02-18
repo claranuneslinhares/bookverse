@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BookService } from '../services/book.service';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
@@ -19,11 +18,11 @@ livrosPopulares: any[] = [];
 constructor(private bookService: BookService) {}
 
 ngOnInit(): void {
-  this.carregarLivrosPopulares();
+  this.carregarLivrosPorTema('aventura');
 }
 
-carregarLivrosPopulares(): void {
-  this.bookService.buscarLivros('livros populares').subscribe(response => {
+carregarLivrosPorTema(tema: string): void {
+  this.bookService.buscarLivros(tema).subscribe(response => {
     this.livrosPopulares = response;
   });
 }
