@@ -21,11 +21,12 @@ export class BibliotecaComponent implements OnInit {
   }
 
   carregarFavoritos() {
-    this.livrosFavoritos = this.bibliotecaService.obterFavoritos();
+    const favoritos = localStorage.getItem('favoritos');
+    this.livrosFavoritos = favoritos ? JSON.parse(favoritos) : [];
   }
 
   removerFavorito(id: string) {
-    this.bibliotecaService.removerDosFavoritos(id);
-    this.carregarFavoritos(); // Atualiza a lista após remover
+    this.livrosFavoritos = this.livrosFavoritos.filter(livro => livro.id !== id);
+    localStorage.setItem('favoritos', JSON.stringify(this.livrosFavoritos));
   }
 }
