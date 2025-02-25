@@ -1,17 +1,5 @@
-<body>
-  <div class="login-container">
-  <h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="email">E-mail:</label>
-    <input type="email" id="email" formControlName="email" required />
-  
-    <label for="senha">Senha:</label>
-    <input type="password" id="senha" formControlName="senha" required />
-  
-    <button type="submit">Entrar</button>
-  </form>
-    <div class="register">
-      <p>Não tem uma conta?<a href="#">Cadastra-se</a></p>
-    </div>
+<div>
+  <label>Usuário:</label>
+  <input type="text" [(ngModel)]="usuario">
+  <button (click)="fazerLogin()">Login</button>
 </div>
-</body>

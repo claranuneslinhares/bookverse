@@ -1,70 +1,83 @@
-/* Estilo geral da página */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-  }
-  
-  /* Estilo para o campo de input e o botão */
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    outline: none;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Estilo para a lista de livros */
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-  }
-  
-  li {
-    margin-bottom: 10px;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #45a049;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-  }
-  
-  a:hover {
-    color: green;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input[type="text"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  outline: none;
+  text-align: center;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+button:hover {
+  background-color: #45a049;
+}
+.book-container {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-container h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.book-container p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.book-container img {
+  max-width: 100px;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-container button {
+  background-color: #058309;
+  margin-top: 10px;
+}
+
+.book-container button:hover {
+  background-color: #45a049;
+}

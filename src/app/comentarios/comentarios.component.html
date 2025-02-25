@@ -1,10 +1,24 @@
-<h3>Deixe seu comentário:</h3>
-<div>
-  <input [(ngModel)]="novoComentario" placeholder="Deixe seu comentário">
-  <button (click)="adicionarComentario()">Enviar</button>
+<div class="media-avaliacao">
+  <h3>Média das Avaliações: {{ mediaAvaliacao.toFixed(1) }}/5</h3>
 </div>
-<ul>
-  <li *ngFor="let comentario of comentarios">
-    <strong>{{ comentario.usuario }}</strong>: {{ comentario.comentario }}
-  </li>
-</ul>
+
+<div class="avaliacao">
+  <label for="avaliacao">Avalie este livro (0 a 5):</label>
+  <input type="number" id="avaliacao" [(ngModel)]="avaliacao" min="0" max="5">
+</div>
+
+<div class="comentario">
+  <label for="comentario">Deixe seu comentário:</label>
+  <textarea id="comentario" [(ngModel)]="comentario" placeholder="Digite seu comentário aqui..."></textarea>
+</div>
+
+<button (click)="salvarAvaliacao()" class="salvar-btn">Salvar Avaliação e Comentário</button>
+
+<div class="comentarios-container">
+  <h3>Comentários:</h3>
+  <div *ngIf="comentarios.length === 0">Nenhum comentário ainda.</div>
+  <div *ngFor="let c of comentarios" class="comentario-item">
+    <strong>{{ c.usuario }}</strong> - <span>Avaliação: {{ c.avaliacao }}/5</span>
+    <p>{{ c.comentario }}</p>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ComentariosComponent } from '../comentarios/comentarios.component';
+import { UserLoginService } from '../services/user-login.service';
 
 @Component({
   selector: 'app-livros-detalhes',
@@ -14,37 +15,54 @@ import { ComentariosComponent } from '../comentarios/comentarios.component';
   styleUrl: './livros-detalhes.component.css'
 })
 export class LivrosDetalhesComponent implements OnInit {
-  livro: any = null;
+  livro: any;
   favorito: boolean = false;
-  avaliacao: number = 0;
+  favoritoAdicionado: boolean = false;
+  
 
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
-    private bibliotecaService: BibliotecaService
+    private bibliotecaService: BibliotecaService,
+    private userLogin: UserLoginService,
   ) {}
 
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id'); // Captura o ID da URL
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.bookService.getLivroGoogle(id).subscribe((response) => {
         this.livro = response;
-        this.favorito = this.bibliotecaService.isFavorito(this.livro.id);
-        this.avaliacao = this.bibliotecaService.getAvaliacao(this.livro.id) || 0;
+
+        const usuario = this.userLogin.getUsuarioLogado();
+        if (usuario) {
+          this.favorito = this.bibliotecaService.isFavorito(this.livro.id, usuario);
+        } else {
+          this.favorito = false;
+        }
       });
     }
   }
 
-  toggleFavorito() {
-    if (this.favorito) {
-      this.bibliotecaService.removerFavorito(this.livro.id);
-    } else {
-      this.bibliotecaService.adicionarFavorito(this.livro);
+  toggleFavorito(): void {
+    const usuario = this.userLogin.getUsuarioLogado();
+    if (!usuario) {
+      alert('Você precisa estar logado para favoritar um livro.');
+      return;
     }
+
+    if (this.favorito) {
+      this.bibliotecaService.removerDosFavoritos(this.livro.id, usuario);
+    } else {
+      this.bibliotecaService.adicionarFavorito(this.livro, usuario);
+    }
+
     this.favorito = !this.favorito;
-  }
-  salvarAvaliacao() {
-    this.bibliotecaService.salvarAvaliacao(this.livro.id, this.avaliacao);
+    this.favoritoAdicionado = !this.favoritoAdicionado; // Exibe a mensagem
+
+    // Exibe a mensagem por 2 segundos
+    setTimeout(() => {
+      this.favoritoAdicionado = false;
+    }, 2000);
   }
 }
 

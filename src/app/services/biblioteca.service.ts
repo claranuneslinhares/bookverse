@@ -3,43 +3,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BibliotecaService {
-  private favoritos: any[] = [];
-  private avaliacoes: { [id: string]: number } = {}; 
-  constructor() {
-    const storage = localStorage.getItem('favoritos');
-    this.favoritos = storage ? JSON.parse(storage) : [];
-    const avaliacoesStorage = localStorage.getItem('avaliacoes');
-    this.avaliacoes = avaliacoesStorage ? JSON.parse(avaliacoesStorage) : {};
+  constructor() {}
+
+  listarFavoritos(usuario: string): any[] {
+    return JSON.parse(localStorage.getItem(`favoritos-${usuario}`) || '[]');
   }
 
-  adicionarFavorito(livro: any) {
-    this.favoritos.push(livro);
-    this.salvarNoStorage();
+  adicionarFavorito(livro: any, usuario: string): void {
+    let favoritos = this.listarFavoritos(usuario);
+    if (!favoritos.some(fav => fav.id === livro.id)) {
+      favoritos.push(livro);
+      localStorage.setItem(`favoritos-${usuario}`, JSON.stringify(favoritos));
+    }
   }
 
-  removerFavorito(id: string) {
-    this.favoritos = this.favoritos.filter(livro => livro.id !== id);
-    this.salvarNoStorage();
+  removerDosFavoritos(livroId: string, usuario: string): void {
+    let favoritos = this.listarFavoritos(usuario);
+    favoritos = favoritos.filter(fav => fav.id !== livroId);
+    localStorage.setItem(`favoritos-${usuario}`, JSON.stringify(favoritos));
   }
-
-  isFavorito(id: string): boolean {
-    return this.favoritos.some(livro => livro.id === id);
-  }
-
-  obterFavoritos() {
-    return this.favoritos;
-  }
-  salvarAvaliacao(id: string, nota: number) {
-    this.avaliacoes[id] = nota;
-    localStorage.setItem('avaliacoes', JSON.stringify(this.avaliacoes));
-  }
-
-  getAvaliacao(id: string): number {
-    return this.avaliacoes[id] || 0;
-  }
-
-  private salvarNoStorage() {
-    localStorage.setItem('favoritos', JSON.stringify(this.favoritos));
-    localStorage.setItem('avaliacoes', JSON.stringify(this.avaliacoes));
+  isFavorito(livroId: string, usuario: string): boolean {
+    const favoritos = this.listarFavoritos(usuario);
+    return favoritos.some(fav => fav.id === livroId);
   }
 }
