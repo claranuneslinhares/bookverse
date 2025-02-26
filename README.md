@@ -1,27 +1,31 @@
 # Bookverse
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+##  Sobre o Projeto
+Este projeto é uma plataforma para que os usuários possam buscar livros, favoritar suas leituras e deixar avaliações e comentários sobre os livros.
 
-## Development server
+## Funcionalidades
+1. Pesquisa de Livros
+- O usuário pode pesquisar livros através de um campo de pesquisa.
+- Os resultados são exibidos dinamicamente com base no termo pesquisado.
+2. Favoritar Livros
+- Usuários logados podem favoritar e remover livros de sua biblioteca pessoal
+- As informações são armazenadas para acesso posterior.
+3. Avaliações e Comentários
+- Usuários logados podem avaliar livros com uma nota e deixar um comentário.
+- Os comentários são armazenados localmente e recuperados sempre que necessário.
+- O sistema calcula a média das avaliações e a exibe para cada livro.
+##  Tecnologias Utilizadas
+- API do Google Books  para obtenção de informações dos livros.
+- LocalStorage para armazenamento de avaliações e comentários.
+## Como Executar o Projeto
+1. Clone este repositório:
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
+2. Acesse a pasta do projeto:
+cd nome-do-repositorio
+3. Instale as dependências:
+npm install
+4. Execute o projeto:
+ng serve
+5. Acesse no navegador:
+http://localhost:4200
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

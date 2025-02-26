@@ -2,7 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { BibliotecaService } from '../services/biblioteca.service';
 import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LivroGoogle } from '../services/book.service';
 import { UserLoginService } from '../services/user-login.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class BibliotecaComponent implements OnInit {
 
   constructor(
     private bibliotecaService: BibliotecaService,
-    private userLogin: UserLoginService  // Injetando o serviço de login
+    private userLogin: UserLoginService  
   ) {}
 
   ngOnInit() {

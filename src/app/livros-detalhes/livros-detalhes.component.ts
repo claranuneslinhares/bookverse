@@ -57,12 +57,12 @@ export class LivrosDetalhesComponent implements OnInit {
     }
 
     this.favorito = !this.favorito;
-    this.favoritoAdicionado = !this.favoritoAdicionado; // Exibe a mensagem
+    this.favoritoAdicionado = !this.favoritoAdicionado; 
 
-    // Exibe a mensagem por 2 segundos
+    
     setTimeout(() => {
       this.favoritoAdicionado = false;
-    }, 2000);
+    }, 5000);
   }
 }
 

@@ -1,5 +1,5 @@
 .favorito-btn {
-    background-color: #f1c40f;
+    background-color: rgb(51, 194, 7);
     border: none;
     color: white;
     padding: 10px 20px;
@@ -11,27 +11,25 @@
     transition: background-color 0.3s;
   }
   
-  .favorito-btn:hover {
-    background-color: #f39c12;
+.favorito-btn:hover {
+    background-color: #19c427;
   }
   
-  .favorito-btn .icon {
+.favorito-btn .icon {
     margin-right: 10px;
     font-size: 20px;
-  }
+}
   
-  .favorito-btn .icon:nth-child(1) {
-    color: gold; /* Cor da estrela */
-  }
+.favorito-btn .icon:nth-child(1) {
+    color: gold; 
+}
   
-  .favorito-btn .icon:nth-child(2) {
-    color: red; /* Cor do coração */
-  }
-  
-  /* Estilos para a mensagem */
-  .favorito-message {
+.favorito-btn .icon:nth-child(2) {
+    color: red;
+}
+.favorito-message {
     margin-top: 10px;
     color: #27ae60;
     font-size: 14px;
     font-weight: bold;
-  }
+}

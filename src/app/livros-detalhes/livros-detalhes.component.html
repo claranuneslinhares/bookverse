@@ -5,13 +5,13 @@
   <p>{{ livro.volumeInfo.description }}</p>
   <div class="avaliacao-container">
     <button (click)="toggleFavorito()" class="favorito-btn">
-    <span *ngIf="favorito" class="icon">&#9733;</span>  <!-- Ícone de estrela -->
-    <span *ngIf="!favorito" class="icon">&#9829;</span> <!-- Ícone de coração -->
+    <span *ngIf="favorito" class="icon">&#9733;</span>  
+    <span *ngIf="!favorito" class="icon">&#9829;</span> 
     {{ favorito ? 'Remover dos Favoritos' : 'Adicionar aos Favoritos' }}
   </button>
   <div *ngIf="favoritoAdicionado" class="favorito-message">
     Livro adicionado aos favoritos!
   </div>
-    <!-- Componente de Comentários -->
+   
     <app-comentarios *ngIf="livro?.id" [livroId]="livro.id"></app-comentarios>
 </div>

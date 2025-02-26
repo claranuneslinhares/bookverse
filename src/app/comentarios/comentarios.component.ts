@@ -12,7 +12,7 @@ import { UserLoginService } from '../services/user-login.service';
   styleUrl: './comentarios.component.css'
 })
 export class ComentariosComponent {
-  @Input() livroId: string = ''; // Recebe o ID do livro do componente pai
+  @Input() livroId: string = ''; 
   usuario: string | null = null;
   avaliacao: number = 0;
   comentario: string = '';
