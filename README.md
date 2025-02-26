@@ -1,8 +1,8 @@
 # Bookverse
 ## Componentes do grupo: 
-Maria Clara Nunes 
-Laridsa Sales 
-Lucimar Da Silva 
+Maria Clara Nunes,
+Laridsa Sales,
+Lucimar Da Silva,
 ##  Sobre o Projeto
 Este projeto é uma plataforma para que os usuários possam buscar livros, favoritar suas leituras e deixar avaliações e comentários sobre os livros.
 
