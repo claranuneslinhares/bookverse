@@ -19,9 +19,9 @@ Este projeto é uma plataforma para que os usuários possam buscar livros, favor
 - LocalStorage para armazenamento de avaliações e comentários.
 ## Como Executar o Projeto
 1. Clone este repositório:
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/claranuneslinhares/bookverse.git
 2. Acesse a pasta do projeto:
-cd nome-do-repositorio
+cd bookverse
 3. Instale as dependências:
 npm install
 4. Execute o projeto:
